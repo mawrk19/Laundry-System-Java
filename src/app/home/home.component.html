@@ -1,3 +1,62 @@
 <body>
-
+    <div class="logo">
+        <p>LOGO</p>
+    </div>
+    <div class="container">
+        <div class="services">
+            <label class="service-box">
+                <input type="radio" name="service" value="Dry Clean">
+                <span>Dry Clean</span>
+            </label>
+            <label class="service-box">
+                <input type="radio" name="service" value="Self Service">
+                <span>Self Service</span>
+            </label>
+            <label class="service-box">
+                <input type="radio" name="service" value="Fluff and Fold Service">
+                <span>Fluff and Fold Service</span>
+            </label>
+            <label class="service-box">
+                <input type="radio" name="service" value="Blanket/Comforter">
+                <span>Blanket/Comforter</span>
+            </label>
+        </div>
+        <div class="options">
+            <label class="option-box">
+                <input type="radio" name="option" value="Ironing">
+                <span>Ironing</span>
+            </label>
+            <label class="option-box">
+                <input type="radio" name="option" value="Laundry and Ironing">
+                <span>Laundry and Ironing</span>
+            </label>
+            <label class="option-box">
+                <input type="radio" name="option" value="Sun Dry">
+                <span>Sun Dry</span>
+            </label>
+            <input type="number" placeholder="kilo" min="0" step="1">
+        </div>
+        <div class="summary">
+            <input type="text" class="customer-name" placeholder="Customer Name">
+            <div class="order-summary">
+                <table>
+                    <tr>
+                        <th>Product</th>
+                        <th>Service</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Empty</td>
+                    </tr>
+                </table>
+                <p>Subtotal: 0.00 PHP</p>
+            </div>
+            <div class="buttons">
+                <button class="close">Clear</button>
+                <button class="paid">Paid</button>
+            </div>
+        </div>
+    </div>
+    <button class="extra-button">Daily Sales</button> <!-- New button -->
 </body>
