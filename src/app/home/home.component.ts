@@ -71,16 +71,15 @@ export class HomeComponent {
       quantity: this.quantity,
       price: this.calculatePrice()
     };
-
-    this.http.post('http://your-backend-url/api/orders', orderData)
+  
+    this.http.post('http://localhost:8080/api/v1/invoices', orderData)
       .subscribe(response => {
         this.successMessage = 'Order submitted successfully';
         this.errorMessage = '';
         console.log('Order submitted successfully', response);
       }, error => {
-        this.errorMessage = 'Error submitting order';
+        this.errorMessage = 'Error submitting order: ' + (error.message || 'Unknown error');
         this.successMessage = '';
         console.error('Error submitting order', error);
       });
-  }
-}
+  }}
