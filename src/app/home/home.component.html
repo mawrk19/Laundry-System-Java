@@ -1,63 +1,72 @@
-
-<body>
-    <div class="logo">
-        <p>LOGO</p>
+<div class="container">
+  <div class="services">
+    <label class="service-box">
+      <input type="radio" name="service" value="Dry Clean" [(ngModel)]="selectedService" (change)="updateSummary()">
+      <span>Dry Clean</span>
+    </label>
+    <label class="service-box">
+      <input type="radio" name="service" value="Self Service" [(ngModel)]="selectedService" (change)="updateSummary()">
+      <span>Self Service</span>
+    </label>
+    <label class="service-box">
+      <input type="radio" name="service" value="Fluff and Fold Service" [(ngModel)]="selectedService" (change)="updateSummary()">
+      <span>Fluff and Fold Service</span>
+    </label>
+    <label class="service-box">
+      <input type="radio" name="service" value="Blanket/Comforter" [(ngModel)]="selectedService" (change)="updateSummary()">
+      <span>Blanket/Comforter</span>
+    </label>
+  </div>
+  <div class="options">
+    <label class="option-box">
+      <input type="radio" name="option" value="Ironing" [(ngModel)]="selectedOption" (change)="updateSummary()">
+      <span>Ironing</span>
+    </label>
+    <label class="option-box">
+      <input type="radio" name="option" value="Laundry and Ironing" [(ngModel)]="selectedOption" (change)="updateSummary()">
+      <span>Laundry and Ironing</span>
+    </label>
+    <label class="option-box">
+      <input type="radio" name="option" value="Sun Dry" [(ngModel)]="selectedOption" (change)="updateSummary()">
+      <span>Sun Dry</span>
+    </label>
+    <input type="number" placeholder="kilo" min="0" step="1" [(ngModel)]="quantity" (input)="updateSummary()">
+  </div>
+  <div class="summary">
+    <input type="text" class="customer-name" placeholder="Customer Name" [(ngModel)]="customerName" (input)="updateSummary()">
+    <div class="order-summary">
+      <table>
+        <tr>
+          <td>Customer Name:</td>
+          <td>{{ customerName }}</td>
+        </tr>
+        <tr>
+          <td>Selected Service:</td>
+          <td>{{ selectedService }}</td>
+        </tr>
+        <tr>
+          <td>Selected Option:</td>
+          <td>{{ selectedOption }}</td>
+        </tr>
+        <tr>
+          <td>Quantity:</td>
+          <td>{{ quantity }}</td>
+        </tr>
+        <tr>
+          <td>Price:</td>
+          <td>{{ calculatePrice() }}</td>
+        </tr>
+      </table>
     </div>
-    <div class="container">
-        <div class="services">
-            <label class="service-box">
-                <input type="radio" name="service" value="Dry Clean">
-                <span>Dry Clean</span>
-            </label>
-            <label class="service-box">
-                <input type="radio" name="service" value="Self Service">
-                <span>Self Service</span>
-            </label>
-            <label class="service-box">
-                <input type="radio" name="service" value="Fluff and Fold Service">
-                <span>Fluff and Fold Service</span>
-            </label>
-            <label class="service-box">
-                <input type="radio" name="service" value="Blanket/Comforter">
-                <span>Blanket/Comforter</span>
-            </label>
-        </div>
-        <div class="options">
-            <label class="option-box">
-                <input type="radio" name="option" value="Ironing">
-                <span>Ironing</span>
-            </label>
-            <label class="option-box">
-                <input type="radio" name="option" value="Laundry and Ironing">
-                <span>Laundry and Ironing</span>
-            </label>
-            <label class="option-box">
-                <input type="radio" name="option" value="Sun Dry">
-                <span>Sun Dry</span>
-            </label>
-            <input type="number" placeholder="kilo" min="0" step="1">
-        </div>
-        <div class="summary">
-            <input type="text" class="customer-name" placeholder="Customer Name">
-            <div class="order-summary">
-                <table>
-                    <tr>
-                        <th>Product</th>
-                        <th>Service</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                    </tr>
-                    <tr>
-                        <td colspan="4">Empty</td>
-                    </tr>
-                </table>
-                <p>Subtotal: 0.00 PHP</p>
-            </div>
-            <div class="buttons">
-                <button class="close">Clear</button>
-                <button class="paid">Paid</button>
-            </div>
-        </div>
-    </div>
-    <button class="extra-button">Daily Sales</button> <!-- New button -->
-</body>
+  </div>
+  <div class="form-actions">
+    <button (click)="submitForm()">Submit</button>
+    <button (click)="resetForm()">Reset</button>
+  </div>
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>
