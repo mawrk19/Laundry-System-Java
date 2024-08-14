@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +7,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  customerName: string = '';
-  selectedService: string = '';
-  selectedOption: string = '';
+  customer: string = '';
+  service: string = '';
+  option: string = '';
   quantity: number = 0;
+  kilo: number = 0; // Added kilo property
   successMessage: string = '';
   errorMessage: string = '';
 
@@ -18,21 +19,23 @@ export class HomeComponent {
 
   updateSummary() {
     // Logic to update the summary based on user inputs
-    console.log(`Customer: ${this.customerName}, Service: ${this.selectedService}, Option: ${this.selectedOption}, Quantity: ${this.quantity}`);
+    console.log(`Customer: ${this.customer}, Service: ${this.service}, Option: ${this.option}, Quantity: ${this.quantity}, Kilo: ${this.kilo}`);
   }
 
   resetForm() {
-    this.customerName = '';
-    this.selectedService = '';
-    this.selectedOption = '';
+    this.customer = '';
+    this.service = '';
+    this.option = '';
     this.quantity = 0;
+    this.kilo = 0; // Reset kilo property
     this.successMessage = '';
     this.errorMessage = '';
   }
 
   calculatePrice(): number {
+    const kiloPrice = 63;
     let basePrice = 0;
-    switch (this.selectedService) {
+    switch (this.service) {
       case 'Dry Clean':
         basePrice = 10;
         break;
@@ -48,7 +51,7 @@ export class HomeComponent {
     }
 
     let optionPrice = 0;
-    switch (this.selectedOption) {
+    switch (this.option) {
       case 'Ironing':
         optionPrice = 2;
         break;
@@ -60,26 +63,36 @@ export class HomeComponent {
         break;
     }
 
-    return (basePrice + optionPrice) * this.quantity;
+    return (basePrice + optionPrice + kiloPrice * this.kilo); // Use kilo property
   }
 
   submitForm() {
     const orderData = {
-      customerName: this.customerName,
-      selectedService: this.selectedService,
-      selectedOption: this.selectedOption,
+      customer: this.customer,
+      service: this.service,
+      option: this.option,
       quantity: this.quantity,
+      kilo: this.kilo, // Include kilo property
       price: this.calculatePrice()
     };
   
+    console.log('Order Data:', orderData); // Log the data to verify
+  
     this.http.post('http://localhost:8080/api/v1/invoices', orderData)
-      .subscribe(response => {
-        this.successMessage = 'Order submitted successfully';
-        this.errorMessage = '';
-        console.log('Order submitted successfully', response);
-      }, error => {
-        this.errorMessage = 'Error submitting order: ' + (error.message || 'Unknown error');
-        this.successMessage = '';
-        console.error('Error submitting order', error);
-      });
-  }}
+      .subscribe(
+        response => {
+          this.successMessage = 'Order submitted successfully';
+          this.errorMessage = '';
+          console.log('Order submitted successfully', response);
+        },
+        (error: HttpErrorResponse) => {
+          this.errorMessage = 'Error submitting order: ' + (error.error.message || error.message || 'Unknown error');
+          this.successMessage = '';
+          console.error('Error submitting order', error);
+        }
+      );
+  
+    // Additional logging to ensure the function is called
+    console.log('submitForm function executed');
+  }
+}

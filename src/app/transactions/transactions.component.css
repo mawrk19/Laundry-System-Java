@@ -1,41 +1,142 @@
-/* src/app/transactions/transactions.component.css */
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  background-color: #f2f2f2;
+  position: relative; /* Ensure body is the relative positioning context */
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 80px; /* Adjust this margin to make space for the logo */
+}
 
 /* Style the header */
 header {
-    background-color: lightblue;
-    padding: 10px;
+  background-color: lightblue;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it is above other content */
+}
+
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; /* Remove default margin */
+}
+
+header nav ul li {
+  display: inline;
+  margin-right: 15px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:active {
+  color: darkblue;
+  animation: clickAnimation 0.3s;
+}
+
+@keyframes clickAnimation {
+  0% {
+    transform: scale(1);
   }
-  
-  header nav ul {
-    list-style-type: none;
-    padding: 0;
+  50% {
+    transform: scale(0.9);
   }
-  
-  header nav ul li {
-    display: inline;
-    margin-right: 15px;
+  100% {
+    transform: scale(1);
   }
-  
-  header nav ul li a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  /* Add animation effect when link is clicked */
-  header nav ul li a:active {
-    color: darkblue;
-    animation: clickAnimation 0.3s;
-  }
-  
-  @keyframes clickAnimation {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(0.9);
-    }
-    100% {
-      transform: scale(1);
-    }}
+}
+
+/* Style the table */
+table {
+  width: 80%; /* Adjust width as needed */
+  border-collapse: collapse;
+  margin: 20px auto; /* Center the table and add margin */
+  border: 2px solid black; /* Add border around the table */
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Style the button */
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Styles for the receipt */
+#pdf-content {
+  font-family: Arial, sans-serif;
+  display: none; /* Hide the element */
+  visibility: hidden !important; /* Ensure it is hidden */
+  width: auto !important; /* Ensure it has width */
+  height: auto !important; /* Ensure it has height */
+}
+
+#pdf-content h2 {
+  text-align: center;
+}
+
+#pdf-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#pdf-content th, #pdf-content td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#pdf-content th {
+  background-color: #f2f2f2;
+}
