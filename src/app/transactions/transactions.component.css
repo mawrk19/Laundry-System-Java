@@ -1,0 +1,41 @@
+/* src/app/transactions/transactions.component.css */
+
+/* Style the header */
+header {
+    background-color: lightblue;
+    padding: 10px;
+  }
+  
+  header nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  header nav ul li {
+    display: inline;
+    margin-right: 15px;
+  }
+  
+  header nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  /* Add animation effect when link is clicked */
+  header nav ul li a:active {
+    color: darkblue;
+    animation: clickAnimation 0.3s;
+  }
+  
+  @keyframes clickAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }}

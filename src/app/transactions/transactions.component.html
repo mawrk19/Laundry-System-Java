@@ -1,0 +1,33 @@
+<!-- src/app/transactions/transactions.component.html -->
+<header>
+    <nav>
+      <ul>
+        <li><a routerLink="/home">Home</a></li>
+        <li><a routerLink="/transactions">Transactions</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <h2>Past Transactions</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Price</th>
+        <th>Option</th>
+        <th>Quantity</th>
+        <th>Service</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let invoice of invoices">
+        <td>{{ invoice.id }}</td>
+        <td>{{ invoice.customer }}</td>
+        <td>{{ invoice.price }}</td>
+        <td>{{ invoice.option }}</td>
+        <td>{{ invoice.quantity }}</td>
+        <td>{{ invoice.service }}</td>
+      </tr>
+    </tbody>
+  </table>

@@ -16,6 +16,7 @@ import { ShowDetailsComponent } from './show-details/show-details.component';
 import { HomeComponent } from './home/home.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UpdateEmployeeComponent,
     ShowDetailsComponent,
     HomeComponent, // HomeComponent is declared here
-    AdminLoginComponent
+    AdminLoginComponent, TransactionsComponent
   ],
   imports: [
     BrowserModule,
