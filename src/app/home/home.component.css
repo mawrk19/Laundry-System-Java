@@ -52,12 +52,17 @@ app-wave {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  background-color: lightblue; /* Set background color to light blue */
+  padding: 20px;
+  border-radius: 10px;
+  justify-items: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
 }
 
 .service-box {
   width: 200px;
   height: 200px;
-  background-color: #fff;
+  background-color: #fff; /* Set background color to white */
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
@@ -65,6 +70,7 @@ app-wave {
   display: inline-block;
   transition: background-color 250ms ease;
   padding: 40px; /* Padding added back */
+  color: black; /* Set text color to black */
 }
 
 .service-box input[type="radio"] {

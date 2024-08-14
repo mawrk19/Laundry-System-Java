@@ -52,6 +52,7 @@ p {
   margin-bottom:-7px; /*Fix for safari gap*/
   min-height:100px;
   max-height:150px;
+  z-index: 0; /* Ensure waves are behind */
 }
 
 .content {
@@ -102,4 +103,9 @@ p {
   h1 {
     font-size:24px;
   }
+}
+
+:host {
+  position: relative; /* Ensure the component is positioned */
+  z-index: -1; /* Set z-index to -1 */
 }

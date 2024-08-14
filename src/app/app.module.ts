@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { WaveComponent } from './wave/wave.component';
+import { LoginComponent } from './login/login.component';
 // import { ReceiptComponent } from './receipt/receipt.component'; // Uncomment and ensure the file path is correct
 
 @NgModule({
@@ -37,6 +38,7 @@ import { WaveComponent } from './wave/wave.component';
     AdminLoginComponent,
     TransactionsComponent,
     WaveComponent,
+    LoginComponent,
     // ReceiptComponent // Uncomment if the component exists
   ],
   imports: [
