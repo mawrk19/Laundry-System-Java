@@ -13,7 +13,7 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1fr; /* Adjusted to a single column layout */
   gap: 20px;
   background-color: #fff;
   padding: 20px;
@@ -72,9 +72,9 @@ header nav ul li a:active {
 
 /* Style the table */
 table {
-  width: 80%; /* Adjust width as needed */
+  width: 100%; /* Adjusted width to fit container */
   border-collapse: collapse;
-  margin: 20px auto; /* Center the table and add margin */
+  margin: 20px 0; /* Adjusted margin */
   border: 2px solid black; /* Add border around the table */
 }
 
